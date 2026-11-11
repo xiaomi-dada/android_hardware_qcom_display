@@ -209,11 +209,13 @@ ScopedAStatus DisplayConfigAIDL::getDisplayAttributes(int config_index, DisplayT
   auto error = sdm::kErrorNone;
   int disp_id = MapDisplayType(dpy);
 
+  // The index space is the one of getConfigCount(), which counts every mode
+  // the panel reports, not only the configurations exposed to the client.
   sdm::DisplayConfigVariableInfo var_info{};
-  error = settings_->GetDisplayAttributes(disp_id, config_index, &var_info);
+  error = lifecycle_->GetDisplayAttributesForConfig(disp_id, config_index, &var_info);
 
   if (error != sdm::kErrorNone) {
-    ALOGW("%s: Invalid display = %d", __FUNCTION__, disp_id);
+    ALOGW("%s: Invalid display = %d or config = %d", __FUNCTION__, disp_id, config_index);
     return ScopedAStatus(AStatus_fromExceptionCode(EX_ILLEGAL_ARGUMENT));
   }
 
