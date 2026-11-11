@@ -10,6 +10,7 @@ soong_config_module_type {
         "udfps",
         "oplus_udfps",
         "samsung_udfps",
+        "xiaomi_rgb_notifier",
         "default",
         "var3",
         "llvmcov",
@@ -170,6 +171,9 @@ qtidisplay_cc_defaults {
                 "-DSEC_FINGERPRINT_MASK",
                 "-DUDFPS_ZPOS",
             ],
+        },
+        xiaomi_rgb_notifier: {
+            cflags: ["-DXIAOMI_RGB_NOTIFIER"],
         },
         var3 : {
             enabled: false,
