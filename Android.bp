@@ -11,6 +11,7 @@ soong_config_module_type {
         "oplus_udfps",
         "samsung_udfps",
         "xiaomi_rgb_notifier",
+        "panel_dimensions_in_tenth_mm",
         "default",
         "var3",
         "llvmcov",
@@ -174,6 +175,9 @@ qtidisplay_cc_defaults {
         },
         xiaomi_rgb_notifier: {
             cflags: ["-DXIAOMI_RGB_NOTIFIER"],
+        },
+        panel_dimensions_in_tenth_mm: {
+            cflags: ["-DPANEL_DIMENSIONS_IN_TENTH_MM"],
         },
         var3 : {
             enabled: false,
